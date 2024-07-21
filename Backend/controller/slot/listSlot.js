@@ -3,9 +3,10 @@ import { pool } from "../../database/connection.js";
 
 export const listSlot = async (req, res) => {
     const query = `
-    SELECT slots.id, slots.description, slots.timestamp, slots.book, slots.book_userid, slots.pos1, slots.pos2, slots.pos3, slots.pos4, slots.pos5, users.username, users.id as user_id 
+    SELECT slots.id, slots.description, slots.timestamp, slots.book, slots.book_userid, slots.position, users.username, users.id as user_id 
     FROM slots 
     INNER JOIN users ON slots.user_id = users.id
+    ORDER BY slots.timestamp DESC
     `;
     try {
         const dbRes = await pool.query(query);

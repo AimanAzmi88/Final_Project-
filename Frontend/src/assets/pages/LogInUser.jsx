@@ -42,8 +42,8 @@ const LoginUser = () => {
   };
 
   return (
-    <div className='bg-black h-screen'>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-slate-400 shadow-md rounded-lg">
+    <div className='h-full'>
+      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6">
         <h2 className="text-2xl font-bold mb-4">Log In</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>
@@ -51,7 +51,7 @@ const LoginUser = () => {
             type="text"
             value={username.slice(1)}
             onChange={handleUsernameChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-3 py-2 border border-gray-300"
             required
           />
         </div>
@@ -61,11 +61,11 @@ const LoginUser = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            className="w-full px-3 py-2 border border-gray-300"
             required
           />
         </div>
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+        <button type="submit" className="w-full py-2 bg-button hover:border-2 border-black text-black font-bold">
           Log In
         </button>
       </form>

@@ -6,7 +6,8 @@ import Error from "../assets/pages/Error";
 import RegisterUser from "../assets/pages/RegisterUser";
 import LoginUser from "../assets/pages/LogInUser";
 import DataFetcher from "../assets/pages/Slots";
-
+import Auth from "../assets/pages/Auth";
+// import Test from "../assets/pages/Test";
 export  const Router = createBrowserRouter([
     {
         path: "/register",
@@ -34,7 +35,15 @@ export  const Router = createBrowserRouter([
         </ProtectedRoute>
     },
     {
+        path: "/auth",
+        element: <Auth />
+    },
+    {
         path: "*",
         element: <Error />
-    }
+    },
+    // {
+    //     path: "/test",
+    //     element: <Test />
+    // }
 ]);

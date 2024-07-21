@@ -37,8 +37,8 @@ const RegisterUser = () => {
   };
 
   return (
-    <div className='h-full'>
-      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6">
+    <div className=' flex h-screen items-center justify-center'>
+      <form onSubmit={handleSubmit} className="w-full mx-auto p-4 bg-white shadow-md rounded-e-lg w-/4">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>
@@ -46,7 +46,7 @@ const RegisterUser = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
             required
           />
         </div>
@@ -56,7 +56,7 @@ const RegisterUser = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
             required
           />
         </div>
@@ -66,11 +66,11 @@ const RegisterUser = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
             required
           />
         </div>
-        <button type="submit" className="w-full py-2 bg-button hover:border-2 border-black text-black font-bold">
+        <button type="submit" className="w-full bg-slate-800 text-white py-2 rounded-lg hover:bg-button">
           Register
         </button>
       </form>
