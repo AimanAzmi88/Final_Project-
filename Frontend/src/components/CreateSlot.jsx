@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const CreateSlot = () => {
+const CreateSlot = ({ onFormSubmit }) => {
   const [position, setPosition] = useState('');
   const [description, setDescription] = useState('');
 
@@ -16,6 +17,9 @@ const CreateSlot = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     postToApi(position, description);
+    if (onFormSubmit) {
+      onFormSubmit(position, description);
+    }
   };
 
   const postToApi = async (option, desc) => {
@@ -27,92 +31,64 @@ const CreateSlot = () => {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ position: position, description: desc }),
+        body: JSON.stringify({ position: option, description: desc }),
       });
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
-      const data = await response.json();
-      console.log('Response:', data);
+      await response.json();
+
     } catch (error) {
       console.error('Error posting to API:', error);
     }
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="max-w-screen-lg w-full h-full overflow-hidden p-4">
-        <form className="flex flex-col items-center bg-gray-800 p-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
-          <div className="mb-4 w-full">
-            <label className="block text-white text-lg mb-2">Description:</label>
+    <div className="fixed z-1 left-1/2 transform -translate-x-1/2 bottom-10 flex justify-center items-center min-h-screen">
+      <div className="max-w-lg  bg-form p-6 shadow-bold">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Create a Slot</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col space-y-4"
+        >
+          <div className="mb-4">
+            <label className="block text-gray-700 text-lg mb-2">Description:</label>
             <input
               type="text"
               value={description}
               onChange={handleDescriptionChange}
-              className="w-full p-2 text-black rounded"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter slot description"
             />
           </div>
-          <div className="mb-4 w-full">
-            <label className="block text-white text-lg mb-2">
-              <input
-                type="radio"
-                value="pos1"
-                checked={position === 'pos1'}
-                onChange={handleOptionChange}
-                className="mr-2"
-              />
-              Pos 1
-            </label>
-            <label className="block text-white text-lg mb-2">
-              <input
-                type="radio"
-                value="pos2"
-                checked={position === 'pos2'}
-                onChange={handleOptionChange}
-                className="mr-2"
-              />
-              Pos 2
-            </label>
-            <label className="block text-white text-lg mb-2">
-              <input
-                type="radio"
-                value="pos3"
-                checked={position === 'pos3'}
-                onChange={handleOptionChange}
-                className="mr-2"
-              />
-              Pos 3
-            </label>
-            <label className="block text-white text-lg mb-2">
-              <input
-                type="radio"
-                value="pos4"
-                checked={position === 'pos4'}
-                onChange={handleOptionChange}
-                className="mr-2"
-              />
-              Pos 4
-            </label>
-            <label className="block text-white text-lg mb-2">
-              <input
-                type="radio"
-                value="pos5"
-                checked={position === 'pos5'}
-                onChange={handleOptionChange}
-                className="mr-2"
-              />
-              Pos 5
-            </label>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-lg mb-2">Position:</label>
+            {['Safelane', 'Midlane', 'Offlane', 'Support', 'Hard Support'].map((pos) => (
+              <label key={pos} className=" text-gray-800 mb-2 flex items-center">
+                <input
+                  type="radio"
+                  value={pos}
+                  checked={position === pos}
+                  onChange={handleOptionChange}
+                  className="mr-2"
+                />
+                <span>{pos}</span>
+              </label>
+            ))}
           </div>
-          <button type="submit" className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
             Submit
           </button>
         </form>
       </div>
     </div>
   );
+};
+
+CreateSlot.propTypes = {
+  onFormSubmit: PropTypes.func,
 };
 
 export default CreateSlot;

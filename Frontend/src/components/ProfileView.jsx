@@ -30,10 +30,10 @@ const ProfileView = ({ userData, onEditClick }) => {
 ProfileView.propTypes = {
     userData: PropTypes.shape({
       username: PropTypes.string.isRequired,
-      mmr: PropTypes.string.isRequired,
-      bio: PropTypes.string.isRequired,
-      user_id: PropTypes.string.isRequired,
-      ign: PropTypes.string.isRequired
+      mmr: PropTypes.number,
+      bio: PropTypes.string,
+      user_id: PropTypes.number,
+      ign: PropTypes.string
     }),
     onEditClick: PropTypes.func.isRequired
   };

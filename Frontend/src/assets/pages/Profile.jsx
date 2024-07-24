@@ -3,6 +3,7 @@ import Navigation from '../../components/Navigation';
 import ProfileView from '../../components/ProfileView';
 import ProfileEdit from '../../components/ProfileEdit';
 import UserSlot from '../../components/UserSlot';
+import UserBookedSlot from '../../components/UserBookedSlot';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -83,7 +84,10 @@ const Profile = () => {
     <div className='flex flex-col items-center w-full min-h-screen bg-custom-gradient gap-6 pt-4'>
       <Navigation />
       {!isEditing ? (
-        <ProfileView userData={userData} onEditClick={handleEditButtonClick} />
+        <ProfileView 
+          userData={userData} 
+          onEditClick={handleEditButtonClick} 
+        />
       ) : (
         <ProfileEdit
           editFormData={editFormData}
@@ -91,7 +95,10 @@ const Profile = () => {
           onFormSubmit={handleFormSubmit}
         />
       )}
-      <UserSlot />
+      <div className='flex'>
+        <UserSlot />
+        <UserBookedSlot />
+      </div>
     </div>
   );
 };
