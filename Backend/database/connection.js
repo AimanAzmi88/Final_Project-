@@ -4,13 +4,17 @@ import createUserTable from '../model/user.js';
 import profile from '../model/profile.js';
 import slot from '../model/slot.js';
 
+// export const pool = new Pool({
+//     user: 'man_d_user',
+//     host: 'cqgjaqt2ng1s73fc7nc0-a.singapore-postgres.render.com',
+//     database: 'man_d',
+//     password: '1EghUZI6hnx6oqMFGoi4YE1jM4URxQDS',
+//     port: 5432,
+// });
+
 export const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'final-project',
-    password: 'postgres',
-    port: 5432,
-});
+    connectionString:  "postgres://default:h97RTbsGyqQd@ep-divine-mode-a13xljo7.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require",
+  })
 
 export const databaseInit = async () => {
     try{
