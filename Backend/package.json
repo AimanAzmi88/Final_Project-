@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch index.js",
-    "stop": "node inndex.js"
+    "start": "node index.js"
   },
   "author": "aimanazmi",
   "license": "ISC",
