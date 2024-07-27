@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 const app = express();
 import { databaseInit } from './database/connection.js';
 import healthController from './controller/health.js';
@@ -10,7 +11,11 @@ const PORT = 3000
 
 app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
-
+app.use(cors({
+    origin: 'https://final-project-chi-indol.vercel.app', // frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // allowed headers
+  }));
 
 databaseInit();
 app.get('/', healthController.get);
