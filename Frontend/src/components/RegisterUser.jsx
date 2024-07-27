@@ -45,14 +45,14 @@ const RegisterUser = () => {
   };
 
   return (
-    <div className='h-full'>
+    <div className='h-full w-full bg-form flex justify-center'>
         <PopupMessage
           isOpen={isPopupOpen}
           onClose={() => setIsPopupOpen(false)}
           title= {popupTitle}
           message={popupMessage}
         />
-      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6">
+      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6 w-full">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>

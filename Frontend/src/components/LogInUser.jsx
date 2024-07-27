@@ -58,7 +58,7 @@ const LoginUser = () => {
   };
 
   return (
-    <div className='h-full'>
+    <div className='h-full w-full bg-form flex justify-center'>
       <PopupMessage
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
@@ -66,7 +66,7 @@ const LoginUser = () => {
         message={popupMessage}
         onConfirm={handlePopupConfirm}
       />
-      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6">
+      <form onSubmit={handleSubmit} className="p-4 h-full justify-center flex flex-col gap-6 w-full">
         <h2 className="text-2xl font-bold mb-4">Log In</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>
