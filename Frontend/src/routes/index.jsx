@@ -1,22 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "../../middleware/ProtectedRoute";
-import Home from "../assets/pages/Home";
-import Profile from "../assets/pages/Profile";
-import Error from "../assets/pages/Error";
-import RegisterUser from "../assets/pages/RegisterUser";
-import LoginUser from "../assets/pages/LogInUser";
-import DataFetcher from "../assets/pages/Slots";
-import Auth from "../assets/pages/Auth";
-// import Test from "../assets/pages/Test";
+import ProtectedRoute from "../../middleware/ProtectedRoute"
+import Home from "../pages/Home";
+import Profile from "../pages/Profile";
+import Error from "../pages/Error";
+import DataFetcher from "../pages/Slots";
+import Auth from "../pages/Auth";
+import ButtonToggle from "../pages/Test";
+
 export  const Router = createBrowserRouter([
-    {
-        path: "/register",
-        element: <RegisterUser />
-    },
-    {
-        path: "/login",
-        element: <LoginUser />
-    },
+
     {
         path: "/",
         element: <Home />
@@ -42,8 +34,8 @@ export  const Router = createBrowserRouter([
         path: "*",
         element: <Error />
     },
-    // {
-    //     path: "/test",
-    //     element: <Test />
-    // }
+    {
+        path: "/test",
+        element: <ButtonToggle />
+    }
 ]);

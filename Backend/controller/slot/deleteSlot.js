@@ -7,7 +7,7 @@ DELETE FROM slots WHERE id = $1
 const deleteSlot = async (req, res) => {
     try {
         const id = req.body.id;
-        const dbRes = await pool.query(deleteQuery, [id]);
+        await pool.query(deleteQuery, [id]);
         return res.json({
             message: "Slot deleted successfully"
         })

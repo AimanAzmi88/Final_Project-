@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import RegisterUser from '../assets/pages/RegisterUser';
-import LoginUser from '../assets/pages/LogInUser';
+import RegisterUser from './RegisterUser';
+import LoginUser from './LogInUser';
 
 const ToggleDiv = () => {
   const [isLeft, setIsLeft] = useState(true);

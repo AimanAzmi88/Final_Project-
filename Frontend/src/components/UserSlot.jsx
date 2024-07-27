@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { URL } from "../config.js";
+import formatTimestamp from "../Utils/formatTimeStamp.js";
+import deleteSlot from "../Utils/deleteSlot.js";
 
 const UserSlot = () => {
   const [data, setData] = useState([]);
@@ -6,7 +9,7 @@ const UserSlot = () => {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/slot/user', {
+      const response = await fetch(`${URL}/slot/user`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -19,21 +22,29 @@ const UserSlot = () => {
     }
   };
 
+ const handleDelete = (id) => {
+  deleteSlot(id, fetchData);
+ }
+
   useEffect(() => {
     fetchData();
   }, []);
 
+
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-gray-100 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 text-center">User Slots</h2>
+    <div className="flex flex-col gap-3 p-2 ">
       {data.length > 0 ? (
         data.map((slot) => (
-          <div key={slot.id} className="bg-white p-4 mb-4 border border-gray-300 rounded-lg shadow-sm">
-            <h3 className="text-lg font-medium mb-2">{(slot.book).toString()}</h3>
+          <div key={slot.id} className="bg-white p-4 mb-4 border border-gray-300 rounded-lg shadow-xl">
             <p className="text-gray-700 mb-1"><strong>Description:</strong> {slot.description}</p>
-            <p className="text-gray-700 mb-1"><strong>Timestamp:</strong> {slot.timestamp}</p>
-            <p className="text-gray-700 mb-1"><strong>Time:</strong> {slot.time}</p>
-            <p className="text-gray-700 mb-1"><strong>User ID:</strong> {slot.user_id}</p>
+            <p className='text-black'>{formatTimestamp(slot.timestamp)}</p>
+            <p className="text-gray-700 mb-1"><strong>Position:</strong> {slot.position}</p>
+            <button
+              onClick={() => handleDelete(slot.id)}
+              className="bg-button mt-3 rounded h-8 px-2"
+            >
+              Delete slot
+            </button>
           </div>
         ))
       ) : (

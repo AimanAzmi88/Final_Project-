@@ -2,9 +2,9 @@ import {  Router } from 'express';
 import isAuth from '../middleware/isAuth.js';
 import createSlot from '../controller/slot/createSlot.js'
 import deleteSlot from '../controller/slot/deleteSlot.js';
-import {listSlot, userSlot, userSlotBooked} from '../controller/slot/listSlot.js';
-import slot from '../controller/slot/createSlot.js';
+import {listSlot, userSlot, userSlotBooked, userBookSlot} from '../controller/slot/listSlot.js';
 import bookSlot from '../controller/slot/bookSlot.js';
+import completeSlot from '../controller/slot/completeSlot.js';
 const slotRouter = Router();
 
 slotRouter.use(isAuth);
@@ -20,6 +20,8 @@ slotRouter.delete('/', deleteSlot);
 slotRouter.get('/', listSlot);
 slotRouter.get('/user', userSlot)
 slotRouter.put('/' , bookSlot);
+slotRouter.put('/complete' , completeSlot);
 slotRouter.get('/booked' , userSlotBooked)
+slotRouter.get('/booking', userBookSlot)
 
 export default slotRouter;

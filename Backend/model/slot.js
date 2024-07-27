@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS slots (
     description VARCHAR(255),
     timestamp TIMESTAMP DEFAULT NOW(),
     book BOOLEAN DEFAULT FALSE,
+    status BOOL DEFAULT FALSE,
     book_userId INTEGER REFERENCES users(id),
     position VARCHAR(255)
 )`;

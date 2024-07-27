@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { URL } from '../config.js';
 
 const CreateSlot = ({ onFormSubmit }) => {
   const [position, setPosition] = useState('');
@@ -25,7 +26,7 @@ const CreateSlot = ({ onFormSubmit }) => {
   const postToApi = async (option, desc) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/slot', {
+      const response = await fetch(`${URL}/slot`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

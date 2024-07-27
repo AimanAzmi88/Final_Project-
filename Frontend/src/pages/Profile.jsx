@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import Navigation from '../../components/Navigation';
-import ProfileView from '../../components/ProfileView';
-import ProfileEdit from '../../components/ProfileEdit';
-import UserSlot from '../../components/UserSlot';
-import UserBookedSlot from '../../components/UserBookedSlot';
+import Navigation from '../components/Navigation';
+import ProfileView from '../components/ProfileView';
+import ProfileEdit from '../components/ProfileEdit';
+import UserBookedSlot from '../components/UserBookedSlot';
+import Booking from '../components/Booking';
+import { URL } from '../config.js'
+
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -22,7 +24,7 @@ const Profile = () => {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/user/profile', {
+      const response = await fetch(`${URL}/user/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -57,7 +59,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/user/profile', {
+      const response = await fetch(`${URL}/user/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -95,9 +97,9 @@ const Profile = () => {
           onFormSubmit={handleFormSubmit}
         />
       )}
-      <div className='flex'>
-        <UserSlot />
+      <div className='flex w-full max-w-screen-lg bg-box-color'>
         <UserBookedSlot />
+        <Booking />
       </div>
     </div>
   );

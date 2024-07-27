@@ -2,18 +2,17 @@ import { pool } from "../../database/connection.js";
 
 const query = `
 UPDATE slots
-SET book = $1, book_userid = $2
-WHERE id = $3
+SET status = $1
+WHERE id = $2
 RETURNING *
 `;
 
-const bookSlot = async (req, res) => {
+const completeSlot = async (req, res) => {
     try {
-        const book_userid = req.user;
-        const id = req.body.id;
-        const book = true;
+        const status = true;
+        const id = req.body.id
 
-        await pool.query(query, [book, book_userid, id]);
+        await pool.query(query, [status, id]);
 
 
         res.status(200).send("Slot booked successfully");
@@ -24,4 +23,4 @@ const bookSlot = async (req, res) => {
     }
 }
 
-export default bookSlot;
+export default completeSlot;

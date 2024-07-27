@@ -5,7 +5,7 @@ const ProfileView = ({ userData, onEditClick }) => {
     <div className='max-w-screen-lg flex flex-col w-full justify-between bg-default p-4 border-4 border-black'>
       {userData && (
         <div className='flex'>
-            <img className='size-60 rounded-full hover:scale-110 transition-transform duration-400 ease-in-out' src="miracle.jpg" alt="" />
+            <img className='size-60 rounded-full hover:scale-110 transition-transform duration-400 ease-in-out' src="default.jpg" alt="" />
           <div className='w-2/3 ml-3'>
             <div className='flex justify-between p-3'>
               <p className='text-3xl'>Welcome, {userData.username}</p>

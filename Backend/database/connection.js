@@ -5,10 +5,10 @@ import profile from '../model/profile.js';
 import slot from '../model/slot.js';
 
 // export const pool = new Pool({
-//     user: 'man_d_user',
-//     host: 'cqgjaqt2ng1s73fc7nc0-a.singapore-postgres.render.com',
-//     database: 'man_d',
-//     password: '1EghUZI6hnx6oqMFGoi4YE1jM4URxQDS',
+//     user: 'postgres',
+//     host: 'localhost',
+//     database: 'final-project',
+//     password: 'postgres',
 //     port: 5432,
 // });
 

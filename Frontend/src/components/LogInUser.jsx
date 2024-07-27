@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PopupMessage from '../../components/PopupMessage';
+import PopupMessage from './PopupMessage'
+import { URL } from '../config.js';
 
 const LoginUser = () => {
   const [username, setUsername] = useState('@');
@@ -14,7 +15,7 @@ const LoginUser = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch(`${URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

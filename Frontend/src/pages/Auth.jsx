@@ -1,4 +1,4 @@
-import ToggleDiv from '../../components/Toggle';
+import ToggleDiv from '../components/Toggle';
 
 const Auth = () => {
   return (

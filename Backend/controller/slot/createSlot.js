@@ -21,7 +21,6 @@ const slot = async (req, res) => {
         const result = await pool.query(query, [user_id, description, position]);
         res.status(201).json({
             message: 'Slot created successfully',
-            data
             
     });
     } catch (err) {
