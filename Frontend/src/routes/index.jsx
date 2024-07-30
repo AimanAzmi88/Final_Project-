@@ -5,7 +5,6 @@ import Profile from "../pages/Profile";
 import Error from "../pages/Error";
 import DataFetcher from "../pages/Slots";
 import Auth from "../pages/Auth";
-import ButtonToggle from "../pages/Test";
 
 export  const Router = createBrowserRouter([
 
@@ -34,8 +33,5 @@ export  const Router = createBrowserRouter([
         path: "*",
         element: <Error />
     },
-    {
-        path: "/test",
-        element: <ButtonToggle />
-    }
+
 ]);

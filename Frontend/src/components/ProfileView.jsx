@@ -12,7 +12,6 @@ const ProfileView = ({ userData, onEditClick }) => {
               <p className=''>Current MMR: {userData.mmr}</p>
             </div>
             <p><strong>Bio:</strong> {userData.bio}</p>
-            <p><strong>User ID:</strong> {userData.user_id}</p>
             <p><strong>IGN:</strong> {userData.ign}</p>
           </div>
         </div>

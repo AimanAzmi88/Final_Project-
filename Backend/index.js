@@ -17,6 +17,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'] // allowed headers
   }));
 
+// app.use(cors({ origin: 'http://localhost:5173' }));
+
 databaseInit();
 app.get('/', healthController.get);
 app.post('/', healthController.post);

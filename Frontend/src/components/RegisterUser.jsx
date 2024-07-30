@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PopupMessage from './PopupMessage';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { URL } from '../config.js'
 
 const RegisterUser = () => {
@@ -9,9 +10,11 @@ const RegisterUser = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
   const [popupTitle, setPopupTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const token = localStorage.getItem('token');
@@ -36,23 +39,24 @@ const RegisterUser = () => {
 
       setIsPopupOpen(true);
 
-
     } catch (error) {
       console.error('Error:', error);
       setPopupMessage(error.message);
       setIsPopupOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className='h-full w-full bg-form flex justify-center'>
-        <PopupMessage
-          isOpen={isPopupOpen}
-          onClose={() => setIsPopupOpen(false)}
-          title= {popupTitle}
-          message={popupMessage}
-        />
-      <form onSubmit={handleSubmit} className="p-4 bg-form h-full justify-center flex flex-col gap-6 w-full">
+    <div className='h-full w-full bg-form flex'>
+      <PopupMessage
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        title={popupTitle}
+        message={popupMessage}
+      />
+      <form onSubmit={handleSubmit} className="p-4 bg-form h-full flex flex-col gap-6 w-full">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>
@@ -85,7 +89,7 @@ const RegisterUser = () => {
           />
         </div>
         <button type="submit" className="w-full py-2 bg-button hover:border-2 border-black text-black font-bold">
-          Register
+          {isLoading ? <LoadingSpinner /> : 'Register'}
         </button>
       </form>
     </div>

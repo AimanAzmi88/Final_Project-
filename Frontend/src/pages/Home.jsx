@@ -9,7 +9,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-custom-gradient gap-4">
+    <div className="flex flex-col items-center w-full min-h-screen bg-custom-gradient gap-4 pb-6">
       <div className="max-w-screen-lg w-full flex flex-col sm:flex-row justify-between items-center p-4">
         <div className="flex items-center mb-4 sm:mb-0">
           <GiPunch className="text-white text-6xl sm:text-8xl" />

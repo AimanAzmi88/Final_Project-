@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PopupMessage from './PopupMessage'
 import { URL } from '../config.js';
+import LoadingSpinner from '../components/LoadingSpinner';
+
 
 const LoginUser = () => {
   const [username, setUsername] = useState('@');
@@ -9,10 +11,12 @@ const LoginUser = () => {
   const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [popupTitle, setPopupTitle] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${URL}/login`, {
@@ -40,6 +44,8 @@ const LoginUser = () => {
       setPopupTitle('Error');
       setPopupMessage(error.message);
       setIsPopupOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -58,7 +64,7 @@ const LoginUser = () => {
   };
 
   return (
-    <div className='h-full w-full bg-form flex justify-center'>
+    <div className='h-full w-full bg-form flex '>
       <PopupMessage
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
@@ -66,7 +72,7 @@ const LoginUser = () => {
         message={popupMessage}
         onConfirm={handlePopupConfirm}
       />
-      <form onSubmit={handleSubmit} className="p-4 h-full justify-center flex flex-col gap-6 w-full">
+      <form onSubmit={handleSubmit} className="p-4 h-full flex flex-col gap-6 w-full">
         <h2 className="text-2xl font-bold mb-4">Log In</h2>
         <div className="mb-4">
           <label className="block text-gray-700">Username:</label>
@@ -89,7 +95,7 @@ const LoginUser = () => {
           />
         </div>
         <button type="submit" className="w-full py-2 bg-button hover:border-2 border-black text-black font-bold">
-          Log In
+        {isLoading ? <LoadingSpinner /> : 'Login'}
         </button>
       </form>
     </div>

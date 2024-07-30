@@ -4,11 +4,14 @@ import { URL } from '../config.js';
 import AllUserSlot from '../components/AllUserSlot.jsx';
 import UserSlot from '../components/UserSlot.jsx';
 import bookSlot from '../Utils/bookSlot.js';
+import LoadingSpinner from '../components/LoadingSpinner.jsx';
 
 const DataFetcher = () => {
   const [slot, setSlot] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchSlots = async () => {
+    setIsLoading(true);
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(`${URL}/slot`, {
@@ -22,6 +25,8 @@ const DataFetcher = () => {
       console.log(data);
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -33,15 +38,12 @@ const DataFetcher = () => {
     fetchSlots();
   }, []);
 
-
   const [showDiv1, setShowDiv1] = useState(true);
 
-  // Function to show Div 1
   const showFirstDiv = () => {
     setShowDiv1(true);
   };
 
-  // Function to show Div 2
   const showSecondDiv = () => {
     setShowDiv1(false);
   };
@@ -77,10 +79,14 @@ const DataFetcher = () => {
       <div className='bg-slot max-w-screen-lg w-full flex justify-center flex-col p-3 border-4 border-black'>
         {
           showDiv1 ? (
-            <AllUserSlot 
-              slot={slot}
-              handleBook={handleBook}
-            />
+            isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <AllUserSlot 
+                slot={slot}
+                handleBook={handleBook}
+              />
+            )
           ) : (
             <UserSlot />
           )
