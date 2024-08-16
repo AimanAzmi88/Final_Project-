@@ -13,7 +13,7 @@ import slot from '../model/slot.js';
 // });
 
 export const pool = new Pool({
-    connectionString:  "postgres://default:wVILNi3DjQ4x@ep-weathered-shadow-a17evql3.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require",
+    connectionString: process.env.POSTGRES_URL,
   })
 
 export const databaseInit = async () => {
