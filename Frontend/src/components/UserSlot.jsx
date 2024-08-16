@@ -41,7 +41,7 @@ const UserSlot = () => {
             <p className="text-gray-700 mb-1"><strong>Position:</strong> {slot.position}</p>
             <button
               onClick={() => handleDelete(slot.id)}
-              className="bg-button py-2 px-4 rounded hover"
+              className="bg-button py-2 px-4 rounded hover:bg-buttonh"
             >
               Delete slot
             </button>

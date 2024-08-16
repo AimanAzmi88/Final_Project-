@@ -62,12 +62,11 @@ const UserBookedSlot = () => {
           <div key={slot.id} className="bg-white p-4 mb-4 border border-gray-300 rounded-lg shadow-sm">
             <p className="text-gray-700 mb-1"><strong>Description:</strong> {slot.description}</p>
             <p className="text-gray-700 mb-1"><strong>Timestamp:</strong> {formatTimestamp(slot.timestamp)}</p>
-            <p className="text-gray-700 mb-1"><strong>User ID:</strong> {slot.user_id}</p>
             <p className="text-gray-700 mb-1"><strong>Booked By:</strong> {slot.username}</p>
             {!slot.status ? (
                         <button
                           onClick={() => handleMarkComplete(slot.id)}
-                          className="bg-button mt-3 px-2 rounded h-8"
+                          className="bg-button mt-3 px-2 rounded h-8 hover:bg-buttonh"
                         >
                           Mark as complete
                         </button>
@@ -83,7 +82,7 @@ const UserBookedSlot = () => {
             {slot.status && (
             <button
               onClick={() => handleDelete(slot.id)}
-              className="py-1 px-3 bg-red-500 text-white border border-red-700 rounded hover:bg-red-700 transition-colors duration-300"
+              className="py-1 px-3 mx-2 bg-red-500 text-white border border-red-700 rounded hover:bg-red-700 transition-colors duration-300"
             >
               Delete
             </button>
