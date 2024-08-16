@@ -14,6 +14,7 @@ export default {
       },
       colors: {
         'button': '#a388ee',
+        'buttonh': '#815aed',
         'default': '#90ee90',
         'form': '#7fbc8c',
         'box-color': '#69e2d7',

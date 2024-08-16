@@ -37,11 +37,11 @@ const UserSlot = () => {
         data.map((slot) => (
           <div key={slot.id} className="bg-white p-4 mb-4 border border-gray-300 rounded-lg shadow-xl">
             <p className="text-gray-700 mb-1"><strong>Description:</strong> {slot.description}</p>
-            <p className='text-black'>{formatTimestamp(slot.timestamp)}</p>
+            <p className='text-black'><strong>Posted On:</strong>{formatTimestamp(slot.timestamp)}</p>
             <p className="text-gray-700 mb-1"><strong>Position:</strong> {slot.position}</p>
             <button
               onClick={() => handleDelete(slot.id)}
-              className="bg-button mt-3 rounded h-8 px-2"
+              className="bg-button py-2 px-4 rounded hover"
             >
               Delete slot
             </button>
