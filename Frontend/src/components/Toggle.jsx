@@ -17,7 +17,7 @@ const ToggleDiv = () => {
       {isLeft ? <p>takda akaun?</p>:<p>dah ada akaun?</p>}
       <button
         onClick={togglePosition}
-        className=" bg-button m-4 px-6 py-4 hover:border-2 border-black text-black font-bold"
+        className=" bg-button m-4 px-6 py-4 hover:bg-buttonh text-black font-bold"
       >
         {isLeft ? 'Sign Up' : 'Sign In'}
       </button>

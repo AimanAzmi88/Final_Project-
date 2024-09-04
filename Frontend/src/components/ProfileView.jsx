@@ -18,7 +18,7 @@ const ProfileView = ({ userData, onEditClick }) => {
       )}
       <button
         onClick={onEditClick}
-        className="bg-button m-4 p-4 hover:border-2 border-black text-black font-bold"
+        className="bg-button m-4 p-4 hover:bg-buttonh text-black font-bold"
       >
         Edit Profile
       </button>

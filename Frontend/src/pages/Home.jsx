@@ -21,7 +21,7 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row items-end justify-start w-full max-w-screen-lg h-80 border-4 border-black shadow-bold sm:h-background bg-cover bg-center" style={{ backgroundImage: "url('/wallpaper.jpg')" }}>
-        <button onClick={handleClick} className="bg-button m-4 p-4 hover:border-2 border-black text-black font-bold">Get Started</button>
+        <button onClick={handleClick} className="bg-button m-4 p-4 hover:bg-buttonh text-black font-bold">Get Started</button>
       </div>
       <div className="flex flex-col w-full max-w-screen-lg bg-default p-4 border-2 border-black">
         <h2 className="text-black text-lg">Welcome to our &quot;Definitely Not a Scam&quot; Dota Coaching Bros!</h2>

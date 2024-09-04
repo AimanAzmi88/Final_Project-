@@ -57,6 +57,7 @@ const CreateSlot = ({ onFormSubmit }) => {
           <div className="mb-4">
             <label className="block text-gray-700 text-lg mb-2">Description:</label>
             <input
+              required
               type="text"
               value={description}
               onChange={handleDescriptionChange}
@@ -69,6 +70,7 @@ const CreateSlot = ({ onFormSubmit }) => {
             {['Safelane', 'Midlane', 'Offlane', 'Support', 'Hard Support'].map((pos) => (
               <label key={pos} className=" text-gray-800 mb-2 flex items-center">
                 <input
+                  required
                   type="radio"
                   value={pos}
                   checked={position === pos}

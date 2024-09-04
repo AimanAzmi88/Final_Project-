@@ -36,7 +36,6 @@ const Booking = () => {
             <div key={slot.id} className="bg-white p-4 mb-4 border border-gray-300 rounded-lg shadow-sm">
               <p className="text-gray-700 mb-1"><strong>Description:</strong> {slot.description}</p>
               <p className="text-gray-700 mb-1"><strong>Timestamp:</strong> {formatTimestamp(slot.timestamp)}</p>
-              <p className="text-gray-700 mb-1"><strong>User ID:</strong> {slot.slot_user_id}</p>
               <p className="text-gray-700 mb-1"><strong>Posted By:</strong> {slot.username}</p>
               {slot.status ? (
                         <div className="w-1/4 py-1 mt-4 px-2 rounded bg-green-400">Complete</div>
