@@ -71,6 +71,7 @@ const CreateSlot = ({ onFormSubmit }) => {
               <label key={pos} className=" text-gray-800 mb-2 flex items-center">
                 <input
                   required
+                  name="position"
                   type="radio"
                   value={pos}
                   checked={position === pos}
